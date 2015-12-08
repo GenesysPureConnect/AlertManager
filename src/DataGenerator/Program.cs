@@ -23,10 +23,17 @@ namespace DataGenerator
         {
             try
             {
+                Console.Write("CIC Server: ");
+                var server = Console.ReadLine();
+                Console.Write("CIC username: ");
+                var username = Console.ReadLine();
+                Console.Write("CIC password: ");
+                var password = Console.ReadLine();
+
                 Console.WriteLine("Connecting...");
                 _session.Connect(new SessionSettings(),
-                    new HostSettings(new HostEndpoint("tim-cic.dev2000.com")),
-                    new ICAuthSettings("admin.one", "1234"),
+                    new HostSettings(new HostEndpoint(server)),
+                    new ICAuthSettings(username, password),
                     new StationlessSettings());
                 Console.WriteLine("Connected to {0}", _session.Endpoint.Host);
 
