@@ -1,0 +1,99 @@
+﻿<Window x:Class="AlertManager.view.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:view="clr-namespace:AlertManager.view"
+        xmlns:viewmodel="clr-namespace:AlertManager.viewmodel"
+        mc:Ignorable="d"
+        Title="Alert Manager" Height="550" Width="725" d:DataContext="{d:DesignInstance viewmodel:MainViewModel}" Icon="/AlertManager;component/bell.ico">
+    <DockPanel>
+        <DockPanel Dock="Top" Margin="0,0,0,8">
+            <Label DockPanel.Dock="Top" 
+                   Margin="2,2,2,4" Padding="2" 
+                   BorderThickness="0,0,0,1" BorderBrush="Black"
+                   FontWeight="Bold" FontSize="18">CIC Settings</Label>
+
+            <Button DockPanel.Dock="Right" Padding="10,2" Click="Connect_OnClick" VerticalAlignment="Center">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Content" Value="Connect" />
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=IsConnecting}" Value="True">
+                                <Setter Property="Content" Value="Connecting..." />
+                                <Setter Property="IsEnabled" Value="False" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Path=IsConnected}" Value="True">
+                                <Setter Property="Content" Value="Disconnect" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+            
+            <StackPanel Orientation="Horizontal">
+                <Label VerticalAlignment="Center">Server:</Label>
+                <TextBox Name="txtServer" Margin="0,0,8,0" Width="120" VerticalAlignment="Center" />
+
+                <Label VerticalAlignment="Center">Username:</Label>
+                <TextBox Name="txtUser" Margin="0,0,8,0" Width="120" VerticalAlignment="Center" />
+
+                <Label VerticalAlignment="Center">Password:</Label>
+                <PasswordBox Name="txtPassword" Margin="0,0,8,0" Width="120" VerticalAlignment="Center" />
+            </StackPanel>
+            
+        </DockPanel>
+        
+        <DockPanel Dock="Top" Margin="0,0,0,8">
+            <Label DockPanel.Dock="Top" 
+                   Margin="2,2,2,4" Padding="2" 
+                   BorderThickness="0,0,0,1" BorderBrush="Black"
+                   FontWeight="Bold" FontSize="18">Cleanup Settings</Label>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="90" />
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0" Orientation="Vertical" Margin="2,0,0,0">
+                    <Label FontWeight="Bold" BorderThickness="0,0,0,1" BorderBrush="Black" Padding="2" Margin="0,2,15,6">Statistics</Label>
+                    <StackPanel Orientation="Horizontal">
+                        <Label>Alert Sets:</Label>
+                        <Label Content="{Binding Path=AlertSetCount}" Margin="0,0,10,0"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label>Empty Sets:</Label>
+                        <Label Content="{Binding Path=EmptyAlertSetCount}" Margin="0,0,10,0"/>
+                    </StackPanel>
+                </StackPanel>
+                
+                <StackPanel Grid.Column="1" Orientation="Vertical">
+                    <Label FontWeight="Bold" BorderThickness="0,0,0,1" BorderBrush="Black" Padding="2" Margin="0,2,15,6">Choose Criteria</Label>
+                    <CheckBox IsChecked="{Binding Path=CleanupEmptyAlertSets}">Empty Alert Sets</CheckBox>
+                    <!--<CheckBox IsChecked="{Binding Path=CleanupDeletedUsers}">Deleted Users</CheckBox>
+                    <CheckBox IsChecked="{Binding Path=CleanupInactiveUsers}">Inactive Users</CheckBox>-->
+                </StackPanel>
+
+                <Button Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,2,10" Padding="10,2" Click="CleanUp_OnClick">Clean Up</Button>
+            </Grid>
+        </DockPanel>
+        
+        <StatusBar DockPanel.Dock="Bottom">
+            <Label Content="{Binding Path=StatusText}" />
+        </StatusBar>
+
+        <DockPanel>
+            <Grid DockPanel.Dock="Top">
+                <Label 
+                   Margin="2,2,2,4" Padding="2" 
+                   BorderThickness="0,0,0,1" BorderBrush="Black"
+                   FontWeight="Bold" FontSize="18">Alert Sets</Label>
+                <CheckBox HorizontalAlignment="Right" VerticalAlignment="Center" 
+                          Margin="0,0,2,0"
+                          IsChecked="{Binding Path=ConfirmManualDelete}">Confirm manual delete?</CheckBox>
+            </Grid>
+            <view:AlertSetSummaryView Margin="2,0,0,0" />
+        </DockPanel>
+    </DockPanel>
+</Window>

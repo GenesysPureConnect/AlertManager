@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlertManager", "AlertManager\AlertManager.csproj", "{2AE05944-4748-411B-A012-D38D7BFA2835}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataGenerator", "DataGenerator\DataGenerator.csproj", "{2B61425A-7A72-4710-8086-603A1DA88519}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2AE05944-4748-411B-A012-D38D7BFA2835}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2AE05944-4748-411B-A012-D38D7BFA2835}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2AE05944-4748-411B-A012-D38D7BFA2835}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2AE05944-4748-411B-A012-D38D7BFA2835}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B61425A-7A72-4710-8086-603A1DA88519}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B61425A-7A72-4710-8086-603A1DA88519}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B61425A-7A72-4710-8086-603A1DA88519}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B61425A-7A72-4710-8086-603A1DA88519}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

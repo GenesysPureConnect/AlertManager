@@ -1,0 +1,30 @@
+﻿<UserControl x:Class="AlertManager.view.AlertDefinitionView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AlertManager.view"
+             xmlns:viewmodel="clr-namespace:AlertManager.viewmodel"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300" d:DataContext="{d:DesignInstance viewmodel:AlertDefinitionViewModel}">
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <StackPanel Orientation="Horizontal">
+                <Label>Display String:</Label>
+                <Label Content="{Binding Path=DisplayString}" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label>Description:</Label>
+                <Label Content="{Binding Path=Description}" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label>URI String:</Label>
+                <Label Content="{Binding Path=UriString}" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label>Alert Rule Count:</Label>
+                <Label Content="{Binding Path=AlertRuleCount}" />
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>
